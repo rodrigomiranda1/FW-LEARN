@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tituloProgreso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/espacio_14"
+        android:text="@string/mi_progreso"
+        android:textColor="@color/fw_tinta"
+        android:textSize="@dimen/texto_28"
+        android:textStyle="bold" />
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.FW.Tarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/espacio_18"
+        app:cardBackgroundColor="@color/fw_marino"
+        app:strokeWidth="0dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/espacio_22">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/espacio_28"
+                    android:layout_height="@dimen/espacio_28"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/icono_libro"
+                    app:tint="@color/fw_sobre_marino" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espacio_12"
+                    android:layout_weight="1"
+                    android:text="@string/progreso_general"
+                    android:textColor="@color/fw_sobre_marino"
+                    android:textSize="@dimen/texto_16"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/porcentajeGeneral"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_14"
+                android:textColor="@color/fw_sobre_marino"
+                android:textSize="@dimen/texto_44"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/conteoGeneral"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espacio_8"
+                android:textColor="@color/fw_sobre_marino"
+                android:textSize="@dimen/texto_15" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:id="@+id/contenedorCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/contenedorReciente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_10"
+        android:layout_marginBottom="@dimen/espacio_12"
+        android:text="@string/progreso_por_tema"
+        android:textColor="@color/fw_tinta"
+        android:textSize="@dimen/texto_21"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/contenedorTemas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonHistorial"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_8"
+        android:text="@string/accion_ver_historial" />
+</LinearLayout>

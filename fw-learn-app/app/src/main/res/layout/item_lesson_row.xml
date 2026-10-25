@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/altura_64"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/espacio_10"
+        android:paddingBottom="@dimen/espacio_10">
+
+        <ImageView
+            android:id="@+id/iconoEstadoLeccion"
+            android:layout_width="@dimen/espacio_28"
+            android:layout_height="@dimen/espacio_28"
+            android:background="@drawable/fondo_marca"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/espacio_5"
+            android:src="@drawable/icono_comprobado"
+            app:tint="@color/fw_sobre_marino" />
+
+        <TextView
+            android:id="@+id/tituloLeccion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/espacio_12"
+            android:layout_marginEnd="@dimen/espacio_8"
+            android:layout_weight="1"
+            android:textColor="@color/fw_tinta"
+            android:textSize="@dimen/texto_15" />
+
+        <TextView
+            android:id="@+id/estadoLeccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="98dp"
+            android:textColor="@color/fw_verde"
+            android:textSize="@dimen/texto_12" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/fw_borde" />
+</LinearLayout>

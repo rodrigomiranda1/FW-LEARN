@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nav_contenido"
+        android:textColor="@color/fw_tinta"
+        android:textSize="@dimen/texto_28"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espacio_8"
+        android:layout_marginBottom="@dimen/espacio_20"
+        android:text="@string/descripcion_contenido_admin"
+        android:textColor="@color/fw_apagado"
+        android:textSize="@dimen/texto_15" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/tarjetaCursos"
+            style="@style/Widget.FW.Tarjeta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espacio_5"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/altura_76"
+                android:orientation="horizontal"
+                android:padding="@dimen/espacio_14">
+
+                <ImageView
+                    android:layout_width="@dimen/espacio_26"
+                    android:layout_height="@dimen/espacio_26"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/icono_libro"
+                    app:tint="@color/fw_azul" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espacio_10"
+                    android:layout_weight="1"
+                    android:text="@string/modulo_cursos"
+                    android:textColor="@color/fw_tinta"
+                    android:textSize="@dimen/texto_14"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="@dimen/espacio_14"
+                    android:layout_height="@dimen/espacio_14"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/icono_flecha"
+                    app:tint="@color/fw_apagado" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/tarjetaTemas"
+            style="@style/Widget.FW.Tarjeta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espacio_5"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/altura_76"
+                android:orientation="horizontal"
+                android:padding="@dimen/espacio_14">
+
+                <ImageView
+                    android:layout_width="@dimen/espacio_26"
+                    android:layout_height="@dimen/espacio_26"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/icono_cuadricula"
+                    app:tint="@color/fw_azul" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espacio_10"
+                    android:layout_weight="1"
+                    android:text="@string/modulo_temas"
+                    android:textColor="@color/fw_tinta"
+                    android:textSize="@dimen/texto_14"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="@dimen/espacio_14"
+                    android:layout_height="@dimen/espacio_14"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/icono_flecha"
+                    app:tint="@color/fw_apagado" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/tarjetaLecciones"
+            style="@style/Widget.FW.Tarjeta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espacio_5"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/altura_76"
+                android:orientation="horizontal"
+                android:padding="@dimen/espacio_14">
+
+                <ImageView
+                    android:layout_width="@dimen/espacio_26"
+                    android:layout_height="@dimen/espacio_26"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/icono_leccion"
+                    app:tint="@color/fw_azul" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espacio_10"
+                    android:layout_weight="1"
+                    android:text="@string/modulo_lecciones"
+                    android:textColor="@color/fw_tinta"
+                    android:textSize="@dimen/texto_14"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="@dimen/espacio_14"
+                    android:layout_height="@dimen/espacio_14"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/icono_flecha"
+                    app:tint="@color/fw_apagado" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/tarjetaPreguntas"
+            style="@style/Widget.FW.Tarjeta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espacio_5"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/altura_76"
+                android:orientation="horizontal"
+                android:padding="@dimen/espacio_14">
+
+                <ImageView
+                    android:layout_width="@dimen/espacio_26"
+                    android:layout_height="@dimen/espacio_26"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/icono_pregunta"
+                    app:tint="@color/fw_azul" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/espacio_10"
+                    android:layout_weight="1"
+                    android:text="@string/preguntas_corto"
+                    android:textColor="@color/fw_tinta"
+                    android:textSize="@dimen/texto_14"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="@dimen/espacio_14"
+                    android:layout_height="@dimen/espacio_14"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/icono_flecha"
+                    app:tint="@color/fw_apagado" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</LinearLayout>

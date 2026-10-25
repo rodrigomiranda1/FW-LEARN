@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <color name="fw_fondo">#101A2C</color>
+    <color name="fw_tarjeta">#19263C</color>
+    <color name="fw_tinta">#ECF2FF</color>
+    <color name="fw_apagado">#B0BFD8</color>
+    <color name="fw_azul">#8DADFF</color>
+    <color name="fw_azul_suave">#233B62</color>
+    <color name="fw_menta">#224E45</color>
+    <color name="fw_verde">#81DABC</color>
+    <color name="fw_borde">#34445E</color>
+    <color name="fw_pista">#35445B</color>
+    <color name="fw_marino">#1B3554</color>
+    <color name="fw_sobre_marino">#FFFFFF</color>
+    <color name="fw_sobre_menta">#CEF5E8</color>
+    <color name="fw_peligro">#FFA9B1</color>
+    <color name="fw_codigo">#12243D</color>
+    <color name="negro">#000000</color>
+    <color name="fw_sobre_primario">#102344</color>
+</resources>

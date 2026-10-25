@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/raizArmazon"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fw_fondo"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/encabezado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/altura_68"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/espacio_16"
+        android:paddingTop="@dimen/espacio_8"
+        android:paddingEnd="@dimen/espacio_16"
+        android:paddingBottom="@dimen/espacio_8">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botonAtras"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="@dimen/espacio_48"
+            android:layout_height="@dimen/espacio_48"
+            android:contentDescription="@string/accion_volver"
+            android:minWidth="0dp"
+            android:padding="@dimen/espacio_12"
+            app:icon="@drawable/icono_atras"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="24dp" />
+
+        <ImageView
+            android:id="@+id/iconoMarca"
+            android:layout_width="@dimen/espacio_34"
+            android:layout_height="@dimen/espacio_34"
+            android:layout_marginEnd="@dimen/espacio_10"
+            android:importantForAccessibility="no"
+            android:src="@drawable/icono_marca" />
+
+        <TextView
+            android:id="@+id/tituloEncabezado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/titulo_app"
+            android:textColor="@color/fw_tinta"
+            android:textSize="@dimen/texto_18"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/insigniaAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/espacio_8"
+            android:background="@drawable/fondo_insignia_admin"
+            android:padding="@dimen/espacio_8"
+            android:text="@string/insignia_admin"
+            android:textColor="@color/fw_verde"
+            android:textSize="@dimen/texto_11"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botonCuenta"
+            android:layout_width="@dimen/espacio_48"
+            android:layout_height="@dimen/espacio_48"
+            android:contentDescription="@string/nav_cuenta"
+            android:minWidth="0dp"
+            android:padding="@dimen/espacio_0"
+            android:textColor="@color/fw_tinta"
+            app:backgroundTint="@color/fw_azul_suave"
+            app:cornerRadius="22dp" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/cargando"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/espacio_3"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textoEstado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="polite"
+        android:padding="@dimen/espacio_16"
+        android:textColor="@color/fw_peligro"
+        android:textSize="@dimen/texto_15"
+        android:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/botonReintentar"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/accion_reintentar"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/scrollContenido"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/panelContenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/espacio_20"
+            android:paddingTop="@dimen/espacio_12"
+            android:paddingEnd="@dimen/espacio_20"
+            android:paddingBottom="@dimen/espacio_24" />
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/contenidoLista"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/accionesInferiores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fw_fondo"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/espacio_20"
+        android:paddingTop="@dimen/espacio_6"
+        android:paddingEnd="@dimen/espacio_20"
+        android:paddingBottom="@dimen/espacio_10"
+        android:visibility="gone" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navegacionInferior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fw_tarjeta"
+        app:itemActiveIndicatorStyle="@style/Widget.FW.IndicadorNavegacion"
+        app:itemIconTint="@color/colores_navegacion"
+        app:itemTextColor="@color/colores_navegacion"
+        app:labelVisibilityMode="labeled" />
+</LinearLayout>
