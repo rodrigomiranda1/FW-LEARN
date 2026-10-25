@@ -1,0 +1,27 @@
+**/build/
+**/.gradle/
+**/local.properties
+**/.idea/
+*.iml
+.env
+
+# Credenciales del API (PHP)
+**/config/firebase.php
+**/config/*.local.php
+
+# Claves de Firebase / Google
+**/google-services.json
+**/*service-account*.json
+**/*firebase-adminsdk*.json
+**/serviceAccountKey.json
+
+# Variables de entorno
+.env.*
+!.env.example
+
+# Dependencias PHP
+**/vendor/
+
+# Keystores de Android
+*.jks
+*.keystore
