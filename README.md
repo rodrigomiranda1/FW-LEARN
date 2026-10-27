@@ -85,3 +85,19 @@ four_ways_admin/   Panel web. Se copia a C:\xampp\htdocs\
 database/          Script SQL de la base de datos.
 docs/              Capturas e imágenes de la documentación.
 ```
+
+**Tecnologías**
+
+| Capa | Stack |
+|---|---|
+| Android | Kotlin, ViewBinding, RecyclerView, Retrofit + Gson, SQLite, SharedPreferences, Firebase Authentication |
+| API | PHP 8, MYSQL con consultas preparadas, cURL, Apache |
+| Base de datos | MariaDB / MySQL |
+| Panel web | HTML, CSS y JavaScript sin frameworks |
+
+## Requisitos
+
+- **Android Studio** con JDK 17 y el SDK de Android API 36.1.
+- **XAMPP** con Apache, MariaDB y PHP 8 (extensión `curl` habilitada).
+- Un **proyecto de Firebase** con el método *Correo electrónico/contraseña* activado.
+
