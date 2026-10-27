@@ -187,3 +187,52 @@ Pasos en la consola de Firebase:
 2. Activa **Authentication → Correo electrónico/contraseña**.
 3. Crea las cuentas de prueba.
 4. Copia el **UID** de cada cuenta en `usuarios.firebase_uid`.
+
+## Referencia de la API
+
+Todas las respuestas, salvo `health.php`, usan este formato:
+
+```json
+{"success": true, "data": {}, "mensaje": ""}
+```
+
+**Sesión**
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| POST | `login_firebase.php` | Inicia sesión con el ID token de Firebase (app). |
+| POST | `login.php` | Inicia sesión con usuario y contraseña (panel web). |
+| GET | `me.php` | Devuelve el usuario de la sesión. |
+| POST | `logout.php` | Cierra la sesión. |
+ 
+**Contenido y evaluaciones (alumno)**
+ 
+| Método | Ruta | Descripción |
+|---|---|---|
+| GET | `cursos.php` | Cursos activos. |
+| GET | `topicos.php?curso_id=` | Temas de un curso. |
+| GET | `lecciones.php?topico_id=` | Lecciones de un tema. |
+| GET | `leccion.php?id=` | Lección con su contenido. |
+| GET | `avance.php` | Progreso general del alumno. |
+| POST | `evaluaciones.php` | Inicia una evaluación. |
+| POST | `enviar_evaluacion.php` | Envía las respuestas y devuelve el resultado. |
+| GET | `resultados.php` | Historial de resultados del alumno. |
+ 
+**Mensajes**
+ 
+| Método | Ruta | Quién lo usa | Descripción |
+|---|---|---|---|
+| POST | `mensaje_enviar.php` | Alumno | Envía una consulta al administrador. Límite de 10 por hora. |
+| GET | `mensajes_alumno.php` | Alumno | Lista sus mensajes con las respuestas. |
+| POST | `mensajes_alumno.php` | Alumno | Marca una respuesta como vista. |
+| GET | `mensajes.php` | Admin | Bandeja con todos los mensajes. |
+| POST | `mensaje_leer.php` | Admin | Marca un mensaje como leído. |
+| POST | `mensaje_responder.php` | Admin | Guarda la respuesta a un mensaje. |
+ 
+**Administración**
+ 
+| Método | Ruta | Descripción |
+|---|---|---|
+| GET, POST, PUT, DELETE | `admin.php?recurso=` | Consulta, alta, edición y baja lógica. Recursos: `cursos`, `topicos`, `lecciones`, `preguntas`, `usuarios`, `resultados`, `estadisticas`. |
+| DELETE | `admin_eliminar.php?recurso=` | Borrado definitivo (panel web). |
+| GET | `health.php` | Comprobación de estado del servicio. |
