@@ -15,3 +15,16 @@ Four Ways Learn organiza el aprendizaje en **cursos, temas y lecciones**. Cada l
 Los administradores gestionan todo el contenido, revisa resultados y responden las consultas de los alumnos desde un panel web.
 
 Es un proyecto académico formado por tres piezas que comparten una misma base de datos.
+
+## Contenido
+- [Funcionalidades](#funcionalidades)
+- [Arquitectura](#arquitectura)
+- [Estructura del repositorio](#estructura-del-repositorio)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Cuentas de demostración](#cuentas-de-demostración)
+- [Referencia de la API](#referencia-de-la-api)
+- [Modelo de datos](#modelo-de-datos)
+- [Capturas](#capturas)
+- [Solución de problemas](#solución-de-problemas)
+- [Seguridad](#seguridad)
