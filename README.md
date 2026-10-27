@@ -47,4 +47,41 @@ Es un proyecto académico formado por tres piezas que comparten una misma base d
 ### Panel Web
 - Las mismas funciones de administración, desde el navegador.
 - **Bandeja de mensajes:** cada consulta aparece como una tarjeta con el nombre del alumno, su estado (leído o sin leer, contestado o sin contestar), la pregunta y el botón *Responder*. Incluye filtros y contadores.
-- Borrado definitivo de registros (en caso sea necesario), además de la baja lógico.
+- Borrado definitivo de registros (en caso sea necesario), además de la baja lógica.
+
+## Arquitectura
+
+```mermaid
+flowchart LR
+    FB[Firebase Authentication]
+    APP[App Android<br/>Kotlin + Retrofit]
+    API[API PHP<br/>four_ways_api]
+    DB[(MariaDB<br/>db_fw_learn_v2)]
+    WEB[Panel web<br/>four_ways_admin]
+ 
+    APP -- "correo y contraseña" --> FB
+    FB -- "ID token" --> APP
+    APP -- "JSON + Bearer token" --> API
+    WEB -- "JSON + Bearer token" --> API
+    API --> DB
+    API -. "valida el ID token" .-> FB
+```
+
+**Flujo de autenticación**
+
+1. La app inicia sesión en Firebase, y obtiene un *ID token*.
+2. Envía ese token a `login_firebase.php`, que lo valida contra Firebase, comprueba que la cuenta esté activa y localiza al usuario por `firebase_uid`.
+3. La API emite un **token de sesión propio** (64 caracteres hexadecimales). Solo se guarda su hash en la tabla `sesiones`.
+4. El resto de las peticiones viajan con la cabecera `Authorization: Bearer <token>`.
+
+El panel web sigue el mismo esquema de sesión, pero entra por `login.php` con usuario y contraseña de la tabla `usuarios`.
+
+## Estructura del repositorio
+
+```
+FW_LEARN/          App Android (Gradle). Esta carpeta se abre en Android Studio.
+four_ways_api/     API PHP. Se copia a C:\xampp\htdocs\
+four_ways_admin/   Panel web. Se copia a C:\xampp\htdocs\
+database/          Script SQL de la base de datos.
+docs/              Capturas e imágenes de la documentación.
+```
