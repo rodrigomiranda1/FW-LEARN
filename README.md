@@ -149,7 +149,7 @@ El respositorio no incluye contraseñas: cada persona crea las suyas.
 
 **App Android (Firebase)**
 
-1. En la consola de Firebase, en *Authentication -> Users*, crea una cuenta de administrador y una de alumno con el correo y la contraseña que quieras.
+1. En la consola de Firebase, en *Authentication → Users*, crea una cuenta de administrador y una de alumno con el correo y la contraseña que quieras.
 2. Copia el **UID** de cada cuenta y guárdalo en la base de datos:
    
 ```sql
@@ -171,3 +171,19 @@ UPDATE usuarios SET password = 'EL_HASH_GENERADO' WHERE usuario = 'admin';
 
 Si vuelves a crear una cuenta en Firebase, su UID cambia: actualiza `usuarios.firebase_uid`.
 
+## Configuración de Firebase
+
+Los archivos con claves no se versionan (están en `.gitignore`). Cada persona crea los suyos:
+
+| Archivo | Para qué sirve | Cómo obtenerlo |
+|---|---|---|
+| `FW_LEARN/app/google-services.json` | Conecta la app Android con Firebase. | Consola de Firebase → *Configuración del proyecto* → *Tus apps* → Android → descargar. |
+| `four_ways_api/config/firebase.php` | La API valida el ID token (`project_id` y `api_key`). | Ambos valores están en *Configuración del proyecto → General*. |
+| `four_ways_api/config/conexion.php` | Credenciales de MariaDB. | Las de tu XAMPP. |
+
+Pasos en la consola de Firebase:
+
+1. Crea el proyecto y registra la app Android con el paquete `com.example.four_ways_learn`.
+2. Activa **Authentication → Correo electrónico/contraseña**.
+3. Crea las cuentas de prueba.
+4. Copia el **UID** de cada cuenta en `usuarios.firebase_uid`.
