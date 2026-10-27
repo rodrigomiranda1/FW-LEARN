@@ -22,7 +22,8 @@ Es un proyecto académico formado por tres piezas que comparten una misma base d
 - [Estructura del repositorio](#estructura-del-repositorio)
 - [Requisitos](#requisitos)
 - [Instalación](#instalación)
-- [Cuentas de demostración](#cuentas-de-demostración)
+- [Cuentas de prueba](#cuentas-de-prueba)
+- [Configuración de Firebase](#configuración-de-firebase)
 - [Referencia de la API](#referencia-de-la-api)
 - [Modelo de datos](#modelo-de-datos)
 - [Capturas](#capturas)
@@ -100,4 +101,73 @@ docs/              Capturas e imágenes de la documentación.
 - **Android Studio** con JDK 17 y el SDK de Android API 36.1.
 - **XAMPP** con Apache, MariaDB y PHP 8 (extensión `curl` habilitada).
 - Un **proyecto de Firebase** con el método *Correo electrónico/contraseña* activado.
+
+
+## Instalación
+
+### 1. Base de datos 
+
+1. Inicia **Apache** y **MySQL** desde el panel de XAMPP.
+2. Abre `http://localhost/phpmyadmin/` y crea la base **`db_fw_learn_v2`** con cotejamiento `utf8mb4_general_ci`.
+3. Selecciónala e importa `database/db_fw_learn_v2.sql`. El script icluye la tabla `mensajes`.
+4. Si usas otro usuario o contraseña de MariaDB, ajústalos en `four_ways_api/config/conexion.php`.
+
+### 2. API
+
+Copia `four_ways_api` a `C:\xampp\htdocs\` y comprueba que responde:
+
+```
+http://localhost/four_ways_api/api/health.php
+```
+
+### 3. Panel web
+
+Copia `four_ways_admin` a `C:\xampp\htdocs\` y abre `http://localhost/four_ways_admin/`.
+
+El archivo `four_ways_admin/js/config.js` apunta a `/four_ways_api/api/`, así que ambas carpetas deben quedar dentro de `htdocs`.
+
+### 4. App Android
+
+1. Abre la carpeta `FW_LEARN`, la que contiene `settings.grade.kts`, en Android Studio.
+2. En `gradle.properties` deja **una sola** línea `FW_API_BASE_URL`:
+
+
+```properties
+   # Emulador
+   FW_API_BASE_URL=http://10.0.2.2/four_ways_api/api/
+ 
+   # Celular físico en la misma red (usa la IPv4 de tu PC)
+   FW_API_BASE_URL=http://192.168.1.72/four_ways_api/api/
+```
+La url debe terminar en `/`.
+3. Agrega que exista `FW_LEARN/app/google-services.json`. Este archivo no está en el repositorio; se descarga desde tu proyecto de Firebase (ver [Configuración de Firebase](#configuración-de-firebase)).
+4. Sincroniza Gradle y ejecuta la app, con Apache y MySQL encendidos. 
+
+## Cuentas de prueba
+
+El respositorio no incluye contraseñas: cada persona crea las suyas.
+
+**App Android (Firebase)**
+
+1. En la consola de Firebase, en *Authentication -> Users*, crea una cuenta de administrador y una de alumno con el correo y la contraseña que quieras.
+2. Copia el **UID** de cada cuenta y guárdalo en la base de datos:
+   
+```sql
+   UPDATE usuarios SET firebase_uid = 'UID_DE_FIREBASE' WHERE usuario = 'admin';
+   UPDATE usuarios SET firebase_uid = 'UID_DE_FIREBASE' WHERE usuario = 'alumno';
+```
+
+**Panel web**
+
+El panel valida contra la tabla `usuarios`, con el nombre de usuario (`admin`). Para fijar tu propia contraseña, genera el hash y guárdalo:
+
+```
+php -r "echo password_hash('TU_CONTRASEÑA', PASSWORD_DEFAULT);"
+```
+ 
+```sql
+UPDATE usuarios SET password = 'EL_HASH_GENERADO' WHERE usuario = 'admin';
+```
+
+Si vuelves a crear una cuenta en Firebase, su UID cambia: actualiza `usuarios.firebase_uid`.
 
