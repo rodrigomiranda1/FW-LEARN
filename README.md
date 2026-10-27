@@ -236,3 +236,139 @@ Todas las respuestas, salvo `health.php`, usan este formato:
 | GET, POST, PUT, DELETE | `admin.php?recurso=` | Consulta, alta, edición y baja lógica. Recursos: `cursos`, `topicos`, `lecciones`, `preguntas`, `usuarios`, `resultados`, `estadisticas`. |
 | DELETE | `admin_eliminar.php?recurso=` | Borrado definitivo (panel web). |
 | GET | `health.php` | Comprobación de estado del servicio. |
+
+## Modelos de datos 
+
+### Modelo relacional 
+
+Diagrama generado con el diseñador de phpMyAdmin 
+
+![Modelo relacional de la base de datos](docs/capturas/modelo-relacional.png)
+
+<details>
+<summary>Ver el diagrama como código Mermaid</summary>
+    
+```mermaid
+erDiagram
+    ROLES ||--o{ USUARIOS : "asigna"
+    CURSOS ||--o{ TOPICOS : "contiene"
+    TOPICOS ||--o{ LECCIONES : "agrupa"
+    LECCIONES ||--o{ PREGUNTAS : "incluye"
+    PREGUNTAS ||--o{ ALTERNATIVAS : "tiene"
+    USUARIOS ||--o{ PROGRESO : "registra"
+    LECCIONES ||--o{ PROGRESO : "evalúa"
+    USUARIOS ||--o{ RESULTADOS : "obtiene"
+    LECCIONES ||--o{ RESULTADOS : "genera"
+    USUARIOS ||--o{ EVALUACIONES : "inicia"
+    LECCIONES ||--o{ EVALUACIONES : "evalúa"
+    RESULTADOS |o--o| EVALUACIONES : "cierra"
+    USUARIOS ||--o{ SESIONES : "mantiene"
+    USUARIOS ||--o{ MENSAJES : "envía"
+    USUARIOS |o--o{ MENSAJES : "responde"
+ 
+    ROLES {
+        int(11) id_rol PK
+        varchar(50) nombre UK
+    }
+    USUARIOS {
+        int(11) id_usuario PK
+        int(11) id_rol FK
+        varchar(100) nombre
+        varchar(100) apellido
+        varchar(50) usuario UK
+        varchar(255) password
+        tinyint(1) estado
+        timestamp fecha_registro
+        varchar(128) firebase_uid UK "puede ser NULL"
+    }
+    CURSOS {
+        int(11) id_curso PK
+        varchar(150) nombre
+        text descripcion
+        tinyint(1) estado
+        timestamp fecha_creacion
+    }
+    TOPICOS {
+        int(11) id_topico PK
+        int(11) id_curso FK
+        varchar(150) nombre
+        text descripcion
+        int(11) orden
+        tinyint(1) estado
+    }
+    LECCIONES {
+        int(11) id_leccion PK
+        int(11) id_topico FK
+        varchar(200) titulo
+        text contenido
+        int(11) orden
+        tinyint(1) estado
+    }
+    PREGUNTAS {
+        int(11) id_pregunta PK
+        int(11) id_leccion FK
+        text enunciado
+        int(11) orden
+        tinyint(1) estado
+    }
+    ALTERNATIVAS {
+        int(11) id_alternativa PK
+        int(11) id_pregunta FK
+        varchar(500) texto
+        tinyint(1) es_correcta
+    }
+    PROGRESO {
+        int(11) id_progreso PK
+        int(11) id_usuario FK "único con id_leccion"
+        int(11) id_leccion FK
+        tinyint(1) completada
+        decimal mejor_puntaje "5,2"
+        timestamp fecha_actualizacion
+    }
+    RESULTADOS {
+        int(11) id_resultado PK
+        int(11) id_usuario FK
+        int(11) id_leccion FK
+        decimal puntaje "5,2"
+        int(11) total_preguntas
+        decimal porcentaje "5,2"
+        timestamp fecha_resultado
+    }
+    EVALUACIONES {
+        char(64) id_intento PK
+        int(11) id_usuario FK
+        int(11) id_leccion FK
+        mediumtext snapshot
+        mediumtext revision "puede ser NULL"
+        datetime expira
+        int(11) id_resultado FK "puede ser NULL"
+        timestamp fecha_creacion
+    }
+    SESIONES {
+        char(64) token_hash PK
+        int(11) id_usuario FK
+        datetime expira
+    }
+    INTENTOS_LOGIN {
+        bigint(20) id PK
+        varchar(45) ip
+        varchar(50) usuario
+        timestamp fecha
+    }
+    MENSAJES {
+        int(11) id_mensaje PK
+        int(11) id_usuario FK "alumno que escribe"
+        text pregunta
+        tinyint(1) leido
+        text respuesta "puede ser NULL"
+        int(11) id_admin FK "admin que responde, puede ser NULL"
+        timestamp fecha_envio
+        datetime fecha_respuesta "puede ser NULL"
+        tinyint(1) respuesta_vista
+    }
+```
+ 
+`INTENTOS_LOGIN` solo registra los intentos de acceso (IP, usuario y fecha) y no tiene clave foránea.
+ 
+</details>    
+
