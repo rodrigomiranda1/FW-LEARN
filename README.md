@@ -372,3 +372,30 @@ erDiagram
  
 </details>    
 
+### Reglas de integridad
+
+| Relación (hija → padre) | Al borrar el padre | Al actualizar el padre |
+|---|---|---|
+| `usuarios.id_rol` → `roles` | Se bloquea el borrado | Se actualiza |
+| `topicos.id_curso` → `cursos` | Se borran los temas | Se actualiza |
+| `lecciones.id_topico` → `topicos` | Se borran las lecciones | Se actualiza |
+| `preguntas.id_leccion` → `lecciones` | Se borran las preguntas | Se actualiza |
+| `alternativas.id_pregunta` → `preguntas` | Se borran las alternativas | Se actualiza |
+| `progreso` y `resultados` → `usuarios` y `lecciones` | Se borran los registros | Se actualiza |
+| `evaluaciones.id_usuario` y `id_leccion` | Se borran los intentos | |
+| `evaluaciones.id_resultado` → `resultados` | Queda en `NULL` | |
+| `sesiones.id_usuario` → `usuarios` | Se borran las sesiones | |
+| `mensajes.id_usuario` → `usuarios` | Se borran sus mensajes | Se actualiza |
+| `mensajes.id_admin` → `usuarios` | Queda en `NULL` (el mensaje se conserva) | Se actualiza |
+ 
+Índices únicos: `usuarios.usuario`, `usuarios.firebase_uid`, `roles.nombre` y la pareja `progreso(id_usuario, id_leccion)`.
+
+### Caché local en Android (SQLite)
+
+| Tabla | Clave primaria | Campos |
+|---|---|---|
+| `cursos` | `(id_usuario, id_curso)` | nombre, descripcion, total_lecciones, lecciones_completadas, porcentaje_avance |
+| `topicos` | `(id_usuario, id_curso, id_topico)` | nombre, descripcion, orden, estado, total_lecciones, lecciones_completadas, porcentaje_avance |
+ 
+La sesión del alumno se guarda en `SharedPreferences` (`fw_session_v2`): el token de la API y los datos del usuario en JSON.
+
