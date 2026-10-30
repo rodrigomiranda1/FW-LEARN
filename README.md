@@ -406,3 +406,16 @@ La sesión del alumno se guarda en `SharedPreferences` (`fw_session_v2`): el tok
 ![Lección, evaluación y progreso](docs/capturas/leccion-progreso.png)
 
 ![Administración de usuarios](docs/capturas/administracion.png)
+
+## Solución de problemas 
+
+| Síntoma | Causa probable | Solución |
+|---|---|---|
+| La app muestra "Error de conexión". | Apache o MySQL apagados, o URL incorrecta. | Enciende XAMPP y revisa `FW_API_BASE_URL`. En un celular físico usa la IPv4 de la PC. |
+| Error 404 al iniciar sesión. | Falta `login_firebase.php` en `four_ways_api/api/`. | Copia la carpeta `api` completa y prueba la URL en el navegador. |
+| 401 "Inicia sesión nuevamente". | Token vencido o inexistente. | Vuelve a iniciar sesión. |
+| 403 "La cuenta no está vinculada a un usuario activo". | `firebase_uid` vacío o distinto. | Copia el UID de Firebase en `usuarios.firebase_uid`. |
+| Los mensajes dan error 500. | La tabla `mensajes` no existe. | Reimporta `database/db_fw_learn_v2.sql` o ejecuta el `CREATE TABLE` de `mensajes`. |
+| Firebase no inicializa en la app. | Falta el plugin `google-services` o el JSON. | Aplica el plugin y coloca el archivo en `app/`. |
+| El panel web no carga datos. | Carpetas fuera de `htdocs` o `API_URL` incorrecta. | Copia `four_ways_admin` y `four_ways_api` dentro de `htdocs`. |
+| "Demasiados intentos. Espera 15 minutos." | Más de 20 intentos de acceso fallidos. | Espera 15 minutos. |
