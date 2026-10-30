@@ -399,3 +399,10 @@ erDiagram
  
 La sesión del alumno se guarda en `SharedPreferences` (`fw_session_v2`): el token de la API y los datos del usuario en JSON.
 
+## Capturas
+
+![Acceso y cursos de programación](docs/capturas/acceso-cursos.png)
+
+![Lección, evaluación y progreso](docs/capturas/leccion-progreso.png)
+
+![Administración de usuarios](docs/capturas/administracion.png)
