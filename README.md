@@ -419,3 +419,15 @@ La sesión del alumno se guarda en `SharedPreferences` (`fw_session_v2`): el tok
 | Firebase no inicializa en la app. | Falta el plugin `google-services` o el JSON. | Aplica el plugin y coloca el archivo en `app/`. |
 | El panel web no carga datos. | Carpetas fuera de `htdocs` o `API_URL` incorrecta. | Copia `four_ways_admin` y `four_ways_api` dentro de `htdocs`. |
 | "Demasiados intentos. Espera 15 minutos." | Más de 20 intentos de acceso fallidos. | Espera 15 minutos. |
+
+## Seguridad
+
+- Los archivos de configuración con claves (`google-services.json`, `config/firebase.php` y `config/conexion.php`) están en `.gitignore`. No los subas al repositorio.
+- La API key de Firebase identifica al proyecto y no es una contraseña, pero conviene restringirla en Google Cloud Console (solo tu app Android y las APIs necesarias).
+- Las contraseñas se guardan con hash (`password_hash`) y todas las consultas usan sentencias preparadas.
+- La app permite HTTP solo en el manifiesto de `debug`. En producción, sirve la API por HTTPS.
+- El archivo `local.properties` no debe subirse al repositorio.
+
+---
+
+Proyecto académico **Four Ways Learn**.
